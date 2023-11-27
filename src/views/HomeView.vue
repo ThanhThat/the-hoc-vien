@@ -77,7 +77,8 @@ export default {
   gap: 32px;
 
   @media print {
-    gap: 20px 16px;
+    gap: 16px;
+    margin: 0 44px;
 
     &-item {
       width: calc(50% - 15px);

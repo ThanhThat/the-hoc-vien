@@ -55,8 +55,8 @@ img {
   display: block;
 }
 .card-name {
-  width: 350px;
-  height: 200px;
+  width: 300px;
+  height: 190px;
   border: 2px solid #1658f4;
   background: #0066ff;
   overflow: hidden;
@@ -72,8 +72,11 @@ img {
 
   .header-logo {
     width: 68px;
-    padding: 4px;
+    padding: 1px;
     background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     img {
       width: 100%;
@@ -89,7 +92,7 @@ img {
     justify-content: center;
 
     h1 {
-      font-size: 13px;
+      font-size: 11.5px;
       text-transform: uppercase;
       margin: 3px auto;
       width: 100%;
@@ -107,7 +110,7 @@ img {
   .card-body-img {
     display: flex;
     align-items: center;
-    width: 35%;
+    width: 32%;
 
     img {
       width: 100%;
@@ -133,7 +136,7 @@ img {
   .card-body-content {
     display: flex;
     flex-direction: column;
-    width: 65%;
+    width: 68%;
     height: 100%;
     align-items: center;
     justify-content: space-around;
