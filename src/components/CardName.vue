@@ -98,6 +98,10 @@ img {
       width: 100%;
       display: block;
       font-weight: 400;
+
+      @media print {
+        font-family: 'Times New Roman', Times, serif;
+      }
     }
   }
 
@@ -105,6 +109,9 @@ img {
     display: flex;
     height: calc(100% - 42px);
     justify-content: space-between;
+    @media print {
+      font-family: 'Times New Roman', Times, serif;
+    }
   }
 
   .card-body-img {
