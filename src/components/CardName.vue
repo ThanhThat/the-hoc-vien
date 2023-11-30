@@ -1,5 +1,8 @@
 <template>
-  <div class="card-name">
+  <div class="card-name" :id="id">
+    <button class="btn btn-remove" @click="removeCard">
+      <i class="fa-regular fa-trash-can"></i>
+    </button>
     <header>
       <div class="header-logo">
         <img src="/images/logo.jpg" alt="logo hưng thịnh" />
@@ -44,6 +47,16 @@ export default {
     classStudent: {
       type: String,
       required: true
+    },
+    id: {
+      type: Number,
+      required: true
+    }
+  },
+
+  methods: {
+    removeCard() {
+      this.$emit('removeCard', this.id)
     }
   }
 }
@@ -60,6 +73,7 @@ img {
   border: 2px solid #1658f4;
   background: #0066ff;
   overflow: hidden;
+  position: relative;
 
   header {
     background: #1658f4;
@@ -186,6 +200,26 @@ img {
     text-transform: uppercase;
     border: none;
     outline: none;
+  }
+}
+
+.btn-remove {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 1;
+  background: transparent;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+
+  &:hover {
+    transform: scale(1.2);
+    color: #000;
+  }
+
+  @media print {
+    display: none;
   }
 }
 </style>

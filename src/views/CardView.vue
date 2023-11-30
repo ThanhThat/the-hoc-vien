@@ -1,6 +1,7 @@
 <script>
 import FormAddCard from '../components/FormAddCard.vue'
 import CardName from '../components/CardName.vue'
+
 export default {
   components: {
     FormAddCard,
@@ -8,7 +9,6 @@ export default {
   },
   data() {
     return {
-      quantityCard: 1,
       listCard: []
     }
   },
@@ -22,13 +22,21 @@ export default {
         classStudent: classStudent.trim().toUpperCase()
       }
 
-      this.listCard.unshift(newCard)
-
-      console.log(this.listCard)
+      if (this.listCard.length <= 9) {
+        this.listCard.unshift(newCard)
+      } else {
+        alert('Số lượng thẻ học viên không được lớn hơn 10')
+      }
     },
 
     printListCard() {
       window.print()
+    },
+
+    onRemoveCard(id) {
+      const index = this.listCard.findIndex((card) => card.id === id)
+
+      this.listCard.splice(index, 1)
     }
   }
 }
@@ -38,6 +46,9 @@ export default {
   <main class="container no-print">
     <div class="row">
       <div class="col-12">
+        <h6 class="text-danger mt-3" v-if="this.listCard.length > 0">
+          Số lượng thẻ: {{ this.listCard.length }}/10
+        </h6>
         <form-add-card @create-card="createCard"></form-add-card>
       </div>
     </div>
@@ -58,7 +69,9 @@ export default {
         :nameStudent="card.nameStudent"
         :srcAvatar="card.srcAvatar"
         :classStudent="card.classStudent"
+        :id="card.id"
         class="grid-card-item"
+        @remove-card="onRemoveCard"
       ></card-name>
     </div>
   </section>

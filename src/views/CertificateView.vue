@@ -1,6 +1,8 @@
 <template>
   <section>
-    <section class="container no-print">
+    <section class="container no-print mt-3">
+      <h1 class="h4">Ảnh chứng chỉ</h1>
+
       <p class="text-danger fw-bold" v-if="listAvatar.length > 0">
         Số lượng: {{ listAvatar.length }}/42
       </p>
