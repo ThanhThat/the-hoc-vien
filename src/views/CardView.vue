@@ -9,7 +9,7 @@ export default {
   },
   data() {
     return {
-      listCard: []
+      listCardStudent: JSON.parse(localStorage.getItem('listCardStudent')) || []
     }
   },
 
@@ -22,21 +22,29 @@ export default {
         classStudent: classStudent.trim().toUpperCase()
       }
 
-      if (this.listCard.length <= 9) {
-        this.listCard.unshift(newCard)
+      if (this.listCardStudent.length <= 9) {
+        this.listCardStudent.unshift(newCard)
+        localStorage.setItem('listCardStudent', JSON.stringify(this.listCardStudent))
       } else {
         alert('Số lượng thẻ học viên không được lớn hơn 10')
       }
     },
 
-    printListCard() {
+    printListCardStudent() {
       window.print()
     },
 
     onRemoveCard(id) {
-      const index = this.listCard.findIndex((card) => card.id === id)
+      const index = this.listCardStudent.findIndex((card) => card.id === id)
 
-      this.listCard.splice(index, 1)
+      this.listCardStudent.splice(index, 1)
+
+      localStorage.setItem('listCardStudent', JSON.stringify(this.listCardStudent))
+    },
+
+    deleteAll() {
+      this.listCardStudent = [];
+      localStorage.removeItem('listCardStudent')
     }
   }
 }
@@ -46,8 +54,8 @@ export default {
   <main class="container no-print">
     <div class="row">
       <div class="col-12">
-        <h6 class="text-danger mt-3" v-if="this.listCard.length > 0">
-          Số lượng thẻ: {{ this.listCard.length }}/10
+        <h6 class="text-danger mt-3" v-if="this.listCardStudent.length > 0">
+          Số lượng thẻ: {{ this.listCardStudent.length }}/10
         </h6>
         <form-add-card @create-card="createCard"></form-add-card>
       </div>
@@ -55,16 +63,18 @@ export default {
   </main>
 
   <section class="container-fluid">
-    <div class="row" v-if="listCard.length > 0">
-      <div class="col-12 d-flex justify-content-center">
-        <button class="btn btn-info text-light no-print" @click="printListCard">
+    <div class="row no-print" v-if="listCardStudent.length > 0">
+      <div class="col-12 d-flex justify-content-center gap-2">
+        <button class="btn btn-info text-light" @click="printListCardStudent">
           <i class="fa-solid fa-print"></i> Print
         </button>
+
+        <button class="btn btn-danger" @click="deleteAll">Xóa tất cả</button>
       </div>
     </div>
     <div class="grid-card mt-3">
       <card-name
-        v-for="card in listCard"
+        v-for="card in listCardStudent"
         :key="card.id"
         :nameStudent="card.nameStudent"
         :srcAvatar="card.srcAvatar"

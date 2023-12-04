@@ -10,10 +10,11 @@
     </section>
 
     <section v-if="listAvatar.length > 0">
-      <div class="mb-3 w-100 d-flex justify-content-center mt-3">
-        <button class="btn btn-success no-print" @click="print">
+      <div class="mb-3 w-100 d-flex justify-content-center mt-3 no-print">
+        <button class="btn btn-success me-3 no-print" @click="print">
           <i class="fa-solid fa-print"></i> Print
         </button>
+        <button class="btn btn-danger no-print" @click="deleteAll">Xóa tất cả</button>
       </div>
       <draggable
         group="listAvatar"
@@ -46,7 +47,7 @@ import draggable from 'vuedraggable'
 export default {
   data() {
     return {
-      listAvatar: []
+      listAvatar: JSON.parse(localStorage.getItem('listAvatar')) || []
     }
   },
   components: { ImgCertificate, FormCertificate, draggable },
@@ -58,11 +59,11 @@ export default {
           studentName,
           srcAvatar
         })
+
+        localStorage.setItem('listAvatar', JSON.stringify(this.listAvatar))
       } else if (this.listAvatar.length >= 42) {
         alert('Số lượng ảnh đã đạt giới hạn!')
       }
-
-      console.log(this.listAvatar)
     },
 
     print() {
@@ -73,6 +74,12 @@ export default {
       const index = this.listAvatar.findIndex((avatar) => avatar.id === id)
 
       this.listAvatar.splice(index, 1)
+      localStorage.setItem('listAvatar', JSON.stringify(this.listAvatar))
+    },
+
+    deleteAll() {
+      this.listAvatar = []
+      localStorage.removeItem('listAvatar')
     }
   }
 }
@@ -85,8 +92,9 @@ export default {
   gap: 22px;
 
   @media print {
-    gap: 16px;
-    margin: 32px 6px;
+    gap: 6px;
+    margin: -16px auto 0;
+    padding: 0;
   }
 }
 

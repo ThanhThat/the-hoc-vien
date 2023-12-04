@@ -16,10 +16,17 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/CardView.vue')
     },
+
     {
       path: '/tao-anh-chung-chi',
       name: 'tao_anh_chung_chi',
       component: () => import('../views/CertificateView.vue')
+    },
+
+    {
+      path: '/can-cuoc-cong-dan',
+      name: 'can_cuoc_cong_dan',
+      component: () => import('../views/CitizenIdentificationCardView.vue')
     }
   ]
 })

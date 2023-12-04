@@ -59,11 +59,19 @@ export default {
 
   methods: {
     chooseImage(e) {
-      this.nameStudent = e.target.files[0].name.split('(')[0]
-      this.src = URL.createObjectURL(e.target.files[0])
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      this.nameStudent = file.name.split('(')[0]
+      // this.src = URL.createObjectURL(e.target.files[0])
+      reader.onload = (e) => {
+        this.src = e.target.result;
+      }
+
+      reader.readAsDataURL(file)
     },
 
     submit() {
+      
       this.$emit('createCard', this.nameStudent, this.src, this.classStudent)
       this.$refs['imgFile'].value = ''
     }

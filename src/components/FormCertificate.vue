@@ -36,7 +36,14 @@ export default {
     chooseImg(e) {
       const imgFile = e.target.files[0]
       this.studentName = imgFile.name.split('(')[0].toUpperCase()
-      this.srcAvatar = URL.createObjectURL(imgFile)
+
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.srcAvatar = e.target.result
+      }
+
+      reader.readAsDataURL(imgFile)
     },
 
     submit() {
