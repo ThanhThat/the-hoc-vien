@@ -4,9 +4,9 @@
       <h1 class="h4">Ảnh chứng chỉ</h1>
 
       <p class="text-danger fw-bold" v-if="listAvatar.length > 0">
-        Số lượng: {{ listAvatar.length }}/42
+        Số lượng: {{ listAvatar.length }}/36
       </p>
-      <form-certificate @addAvatar="addAvatar"></form-certificate>
+      <form-certificate @add-avatar="addAvatar"></form-certificate>
     </section>
 
     <section v-if="listAvatar.length > 0">
@@ -28,8 +28,8 @@
             class="grid-certificate-avatar-item handle"
             :key="avatar.id"
             :id="avatar.id"
-            :src="avatar.srcAvatar"
-            :studentName="avatar.studentName"
+            :src="avatar.src"
+            :studentName="avatar.name"
             @remove-avatar="onRemoveAvatar"
           >
           </img-certificate>
@@ -51,18 +51,33 @@ export default {
     }
   },
   components: { ImgCertificate, FormCertificate, draggable },
+
   methods: {
-    addAvatar(srcAvatar, studentName) {
-      if (this.listAvatar.length < 42) {
-        this.listAvatar.push({
-          id: Date.now(),
-          studentName,
-          srcAvatar
+    // addAvatar(srcAvatar, studentName) {
+    //   if (this.listAvatar.length < 42) {
+    //     this.listAvatar.push({
+    //       id: Date.now(),
+    //       studentName,
+    //       srcAvatar
+    //     })
+
+    //     localStorage.setItem('listAvatar', JSON.stringify(this.listAvatar))
+    //   } else if (this.listAvatar.length >= 42) {
+    //     alert('Số lượng ảnh đã đạt giới hạn!')
+    //   }
+    // },
+
+    addAvatar(imgList) {
+      if (this.listAvatar.length + imgList.length <= 36) {
+        imgList.forEach((img) => {
+          this.listAvatar.push(img)
         })
 
-        localStorage.setItem('listAvatar', JSON.stringify(this.listAvatar))
-      } else if (this.listAvatar.length >= 42) {
-        alert('Số lượng ảnh đã đạt giới hạn!')
+        if (this.listAvatar.length === 36)
+          localStorage.setItem('listAvatar', JSON.stringify(this.listAvatar))
+      } else {
+        alert('Vượt quá 42 ảnh!')
+        imgList = []
       }
     },
 
@@ -92,8 +107,8 @@ export default {
   gap: 22px;
 
   @media print {
-    gap: 6px;
-    margin: -16px auto 0;
+    gap: 22px 2px;
+    margin: 0 auto 0;
     padding: 0;
   }
 }

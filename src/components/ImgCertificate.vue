@@ -1,7 +1,7 @@
 <template>
   <div class="avatar d-flex align-items-center flex-column" :id="id">
     <img class="img-student" :src="src" />
-    <span class="name-student d-block fw-bold no-print">{{ studentName }}</span>
+    <span class="name-student d-block fw-bold">{{ studentName }}</span>
     <button class="btn btn-danger remove-avatar bg-transparent no-print" @click="removeAvatar">
       <i class="fa-solid fa-trash-can"></i>
     </button>
@@ -38,15 +38,24 @@ export default {
   .no-print {
     display: none !important;
   }
+
+  .img-student {
+    min-width: 3cm;
+    min-height: 4cm;
+    display: block;
+  }
 }
 .img-student {
   width: 3cm;
   height: 4cm;
-  display: inline-block;
+  display: block;
 }
 
 .name-student {
-  font-size: 10px;
+  font-size: 8px;
+  font-weight: 300;
+  position: absolute;
+  bottom: -12px;
 }
 
 .avatar {

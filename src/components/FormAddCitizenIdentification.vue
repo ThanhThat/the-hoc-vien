@@ -32,10 +32,8 @@ export default {
       if (files.length <= 10) {
         for (let i = 0; i < files.length; i++) {
           const reader = new FileReader()
-          
 
           reader.onload = (e) => {
-
             this.listImg.push({
               id: Date.now(),
               name: files[i].name,
@@ -44,7 +42,6 @@ export default {
           }
 
           reader.readAsDataURL(files[i])
-
         }
       } else {
         alert('Vui lòng không tải lên quá 10 ảnh!')
