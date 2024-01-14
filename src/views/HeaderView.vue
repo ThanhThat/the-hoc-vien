@@ -12,6 +12,10 @@
     <li class="nav-item">
       <router-link class="nav-link" to="/can-cuoc-cong-dan">CCCD</router-link>
     </li>
+
+    <li>
+      <router-link class="nav-link" to="/chuyen-ba-nguoi">Chuyện 3 người</router-link>
+    </li>
   </ul>
 </template>
 
