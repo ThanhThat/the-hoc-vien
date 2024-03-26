@@ -72,9 +72,9 @@ export default {
       const image1 = document.getElementById('image1')
       const image2 = document.getElementById('image2')
       const image3 = document.getElementById('image3')
-      this.context.drawImage(image1, 0, 0, 302.36220472, 566.92913386)
-      this.context.drawImage(image2, 302.36220472, 302.36220472, 226.77165354, 302.36220472)
-      this.context.drawImage(image3, 529, 302.36220472, 226.77165354, 302.36220472)
+      this.context.drawImage(image1, 0, 0, 305, 550)
+      this.context.drawImage(image2, 305, 262, 225, 305)
+      this.context.drawImage(image3, 530, 262, 225, 305)
     },
 
     downloadImage() {
