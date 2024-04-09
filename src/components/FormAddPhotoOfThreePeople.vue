@@ -23,7 +23,7 @@
   </form>
   <canvas
     id="canvas"
-    width="755.90551181"
+    width="790"
     height="566.92913386"
     data-bs-toggle="tooltip"
     data-bs-placement="top"
@@ -51,6 +51,8 @@ export default {
     const canvas = document.getElementById('canvas')
     console.log(canvas)
     this.context = canvas.getContext('2d')
+    this.context.fillStyle = 'white'
+    this.context.fillRect(0, 0, 790, 567)
   },
 
   methods: {
@@ -72,9 +74,10 @@ export default {
       const image1 = document.getElementById('image1')
       const image2 = document.getElementById('image2')
       const image3 = document.getElementById('image3')
+
       this.context.drawImage(image1, 0, 0, 305, 550)
-      this.context.drawImage(image2, 305, 262, 225, 305)
-      this.context.drawImage(image3, 530, 262, 225, 305)
+      this.context.drawImage(image2, 307, 262, 250, 288)
+      this.context.drawImage(image3, 560, 262, 225, 305)
     },
 
     downloadImage() {
@@ -94,5 +97,9 @@ export default {
 <style lang="scss" scoped>
 canvas:hover {
   box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.6);
+}
+
+#canvas {
+  border: 1px solid #000;
 }
 </style>
