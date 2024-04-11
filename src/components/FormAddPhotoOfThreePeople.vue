@@ -17,14 +17,14 @@
 
     <button type="submit" class="btn btn-primary">Tải ảnh lên</button>
 
-    <img src="/images/1.jpg" id="image1" v-show="false" />
+    <img src="/images/3.jpg" id="image1" v-show="false" />
     <img src="/images/2.jpg" id="image2" v-show="false" />
     <img :src="this.newImage" id="image3" v-show="false" />
   </form>
   <canvas
     id="canvas"
-    width="790"
-    height="566.92913386"
+    width="810"
+    height="567"
     data-bs-toggle="tooltip"
     data-bs-placement="top"
     title="Click để tải ảnh"
@@ -52,7 +52,7 @@ export default {
     console.log(canvas)
     this.context = canvas.getContext('2d')
     this.context.fillStyle = 'white'
-    this.context.fillRect(0, 0, 790, 567)
+    this.context.fillRect(0, 0, 800, 567)
   },
 
   methods: {
@@ -72,12 +72,12 @@ export default {
     submit() {
       console.log(this.context)
       const image1 = document.getElementById('image1')
-      const image2 = document.getElementById('image2')
+      // const image2 = document.getElementById('image2')
       const image3 = document.getElementById('image3')
 
-      this.context.drawImage(image1, 0, 0, 305, 550)
-      this.context.drawImage(image2, 307, 262, 250, 288)
-      this.context.drawImage(image3, 560, 262, 225, 305)
+      this.context.drawImage(image1, 0, 18, 554, 550)
+      // this.context.drawImage(image2, 307, 278, 250, 288)
+      this.context.drawImage(image3, 552, 278, 226.77165354, 302.36220472)
     },
 
     downloadImage() {
