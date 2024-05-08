@@ -39,11 +39,11 @@ export default {
     display: none !important;
   }
 
-  .img-student {
-    min-width: 3cm;
-    min-height: 4cm;
-    display: block;
-  }
+  // .img-student {
+  //   min-width: 3cm;
+  //   min-height: 4cm;
+  //   display: block;
+  // }
 }
 .img-student {
   width: 3cm;

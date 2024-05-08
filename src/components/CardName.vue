@@ -69,7 +69,7 @@ img {
 }
 .card-name {
   width: 300px;
-  height: 190px;
+  height: auto;
   border: 2px solid #1658f4;
   background: #0066ff;
   overflow: hidden;
@@ -121,8 +121,9 @@ img {
 
   .card-body {
     display: flex;
-    height: calc(100% - 42px);
     justify-content: space-between;
+    height: 127px;
+    flex: 1;
     @media print {
       font-family: 'Times New Roman', Times, serif;
     }
@@ -131,11 +132,13 @@ img {
   .card-body-img {
     display: flex;
     align-items: center;
-    width: 32%;
+    height: inherit;
 
     img {
-      width: 100%;
-      height: 100%;
+      // width: 3cm;
+      // height: 4cm;
+      height: inherit;
+      display: block;
     }
   }
 
@@ -157,7 +160,7 @@ img {
   .card-body-content {
     display: flex;
     flex-direction: column;
-    width: 68%;
+    flex: 1;
     height: 100%;
     align-items: center;
     justify-content: space-around;
@@ -169,6 +172,7 @@ img {
     color: #fc1342;
     text-transform: uppercase;
     font-weight: 600;
+    margin: 14px 0;
   }
 
   .input-name {
@@ -190,6 +194,7 @@ img {
     color: #fc1342;
     font-size: 17px;
     font-weight: 600;
+    margin: 12px 0;
   }
 
   .class-student {
